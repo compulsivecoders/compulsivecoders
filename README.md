@@ -1,7 +1,6 @@
 # compulsivecoders
 
-> Compulsive Coders Blog
-
+> Compulsive Coders Blo
 ## Build Setup
 
 ``` bash

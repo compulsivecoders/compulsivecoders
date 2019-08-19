@@ -1,8 +1,8 @@
 <template>
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="https://bulma.io">
-        <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+      <a class="navbar-item" href="/">
+        Compulsive Coders
       </a>
 
       <a
@@ -21,47 +21,24 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item">
+        <nuxt-link class="navbar-item" to="/">
           Home
-        </a>
+        </nuxt-link>
 
-        <a class="navbar-item">
-          Documentation
-        </a>
+        <nuxt-link class="navbar-item" to="/category">
+          Tech
+        </nuxt-link>
 
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            More
-          </a>
-
-          <div class="navbar-dropdown">
-            <a class="navbar-item">
-              About
-            </a>
-            <a class="navbar-item">
-              Jobs
-            </a>
-            <a class="navbar-item">
-              Contact
-            </a>
-            <hr class="navbar-divider">
-            <a class="navbar-item">
-              Report an issue
-            </a>
-          </div>
-        </div>
+        <nuxt-link class="navbar-item" to="/category">
+          Debug
+        </nuxt-link>
       </div>
 
       <div class="navbar-end">
         <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-primary">
-              <strong>Sign up</strong>
-            </a>
-            <a class="button is-light">
-              Log in
-            </a>
-          </div>
+          <span class="icon has-text-info">
+            <i class="fa fa-twitter"></i>
+          </span>
         </div>
       </div>
     </div>
@@ -78,6 +55,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+  .navbar {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
 </style>
