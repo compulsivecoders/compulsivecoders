@@ -2,7 +2,7 @@
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="/">
-        Compulsive Coders
+        CompulsiveCoders
       </a>
 
       <a
@@ -21,7 +21,7 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <nuxt-link class="navbar-item" to="/">
+        <nuxt-link class="navbar-item is-active" to="/">
           Home
         </nuxt-link>
 
@@ -37,7 +37,7 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <span class="icon has-text-info">
-            <i class="fa fa-twitter"></i>
+            <a href="/"><i class="fa fa-twitter"></i></a>
           </span>
         </div>
       </div>
@@ -56,7 +56,39 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '../../assets/theme.scss';
+
   .navbar {
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+    .navbar-brand .navbar-item {
+      font-weight: bold;
+      font-size: 1rem;
+      text-transform: uppercase;
+      margin-left: 10px;
+      color: $grey-dark;
+      vertical-align: bottom;
+    }
+
+    .navbar-start {
+      margin-left: 20px;
+    }
+
+    .navbar-end {
+      margin-right: 20px;
+    }
+
+    .navbar-item {
+      text-transform: uppercase;
+      font-size: 0.8em;
+      font-weight: bold;
+
+      .icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        font-size: 1.5rem;
+      }
+    }
+
   }
 </style>

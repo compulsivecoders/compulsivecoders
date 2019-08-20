@@ -1,17 +1,21 @@
 <template>
-  <div class="main-container">
-    <NavBar />
-    <div class="content-container">
-      <nuxt />
+  <div class="super-container">
+    <div class="main-container">
+      <NavBar />
+      <div class="content-container">
+        <nuxt />
+      </div>
     </div>
+    <Footer />
   </div>
 </template>
 
 <script>
 import NavBar from '~/components/layout/NavBar.vue'
+import Footer from '~/components/layout/Footer.vue'
 export default {
   components: {
-    NavBar
+    NavBar, Footer
   }
 }
 </script>
@@ -21,7 +25,6 @@ export default {
 
 .main-container {
   margin-top: 100px;
-  border-radius: 8px;
   max-width: 1200px;
   overflow: hidden;
   margin-left: auto;
