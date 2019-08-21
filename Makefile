@@ -6,4 +6,4 @@ run_sh:
 	docker run -it --rm --entrypoint /bin/sh compulsivecoders/frontend
 push:
 	docker push compulsivecoders/frontend:latest
-	
+
