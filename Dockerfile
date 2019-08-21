@@ -29,4 +29,14 @@ CMD [ "yarn", "start" ]
 
 FROM node:12.8-alpine AS compulsivecoders-api
 
+RUN mkdir -p /usr/src/api
+WORKDIR /usr/src/api
+
+COPY ./api /usr/src/api/
+RUN yarn install
+
+RUN yarn build
+
 EXPOSE 3001
+
+CMD [ "yarn", "start:prod" ]
