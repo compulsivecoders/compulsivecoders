@@ -1,0 +1,33 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "volumes": [
+    {
+      "name": "node",
+      "host": {
+        "sourcePath": "/var/app/current/node"
+      }
+    }
+  ],
+  "containerDefinitions": [
+    {
+      "essential": true,
+      "image": "compulsivecoders/frontend:latest",
+      "memory": 250,
+      "name": "node",
+      "mountPoints": [
+        {
+          "sourceVolume": "node",
+          "containerPath": "/usr/src/app",
+          "sourcePath": "",
+          "readOnly": true
+        }
+      ],
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 3000
+        }
+      ]
+    }
+  ]
+}
