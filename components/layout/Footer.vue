@@ -1,11 +1,26 @@
 <template>
   <div class="footer">
-    Compulsive Coders team
+    <div class="footer-top-content">
+      <div class="columns">
+        <div class="column">
+          <AboutUs />
+        </div>
+        <div class="column">
+          <AboutUs />
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="footer-bottom-content">
+      <span class="mark">Compulsive Coders 2019</span>
+    </div>
   </div>
 </template>
 
 <script>
+import AboutUs from '../footer/AboutUs'
 export default {
+  components: { AboutUs }
 }
 </script>
 
@@ -13,9 +28,9 @@ export default {
   .footer {
     width: 100%;
     min-height: 100px;
-    background-color: #333;
+    background-color: #1a1a1a;
     color: white;
     font-weight: bold;
-    text-align: right;
+    padding-top: 100px;
   }
 </style>

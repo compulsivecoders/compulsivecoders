@@ -37,7 +37,7 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <span class="icon has-text-info">
-            <a href="/"><i class="fa fa-twitter"></i></a>
+            <a href="/"><i class="fa fa-twitter" /></a>
           </span>
         </div>
       </div>
@@ -81,7 +81,7 @@ export default {
     .navbar-item {
       text-transform: uppercase;
       font-size: 0.8em;
-      font-weight: bold;
+      font-family: 'MontserratSemiBold';
 
       .icon {
         width: 1.5rem;

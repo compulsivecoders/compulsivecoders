@@ -10,9 +10,9 @@
         <div class="card-tag">
           {{ tag }}
         </div>
-        <div class="card-title">
+        <h2 class="card-title">
           {{ title }}
-        </div>
+        </h2>
         {{ description }}
       </div>
     </div>
@@ -32,11 +32,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '../../assets/theme.scss';
+  @import '../../assets/colors.scss';
 
   .card {
     .card-tag {
-      font-weight: bold;
+      font-family: 'MontserratSemiBold';
       color: #0074D9;
       text-transform: uppercase;
       letter-spacing: 1.5px;
@@ -44,10 +44,11 @@ export default {
     }
 
     .card-title {
-      font-weight: bold;
-      font-size: 1.6rem;
+      font-family: 'MontserratSemiBold';
+      font-size: 1.7rem;
       margin-top: 5px;
       margin-bottom: 20px;
+      color: #555;
     }
 
     .card-content {

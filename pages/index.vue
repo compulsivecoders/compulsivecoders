@@ -15,8 +15,8 @@
         title="How to Edit a File on Heroku Dynos using Nano or Vim"
         description="Heroku is a cloud platform offering server hosting and management, along with a rich ecosystem of integrated services such as PostgreSQL, Redis cache, Sentry, PaperTrail, MailTrap, NewRelic, etc. Hosted on AWS behind the scene, Heroku is offering high-level control over your web infrastructure"
         tag="tech"
-
-date="2 months ago"      />
+        date="2 months ago"
+      />
       <Card
         ratio="is-4by3"
         image-src="images/laradock-permission-denied.webp"
@@ -33,8 +33,8 @@ date="2 months ago"      />
         title="How to Split Dependencies into Multiple Vendors using Laravel Mix"
         description="Laravel is a modern open-source PHP framework for web applications, created by Tailor Otwell. It has been designed to produce elegant code, run fast and simplify web development. It comes with a lot of tools such as a router, a queue manager (Horizon), a CLI (Artisan), and a front builder (Mix)"
         tag="tech"
-
-date="2 months ago"      />
+        date="2 months ago"
+      />
       <Card
         ratio="is-4by3"
         image-src="images/npm-unscoped-packages.png"
