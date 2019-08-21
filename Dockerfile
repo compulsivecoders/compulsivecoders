@@ -28,3 +28,5 @@ ENV NUXT_PORT=3000
 CMD [ "yarn", "start" ]
 
 FROM node:12.8-alpine AS compulsivecoders-api
+
+EXPOSE 3001

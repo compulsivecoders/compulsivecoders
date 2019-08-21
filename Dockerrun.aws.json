@@ -2,9 +2,15 @@
   "AWSEBDockerrunVersion": 2,
   "volumes": [
     {
-      "name": "node",
+      "name": "compulsivecoders-volume",
       "host": {
-        "sourcePath": "/var/app/current/node"
+        "sourcePath": "/var/app/current/compulsivecoders-volume"
+      }
+    },
+    {
+      "name": "compulsivecoders-api-volume",
+      "host": {
+        "sourcePath": "/var/app/current/compulsivecoders-api-volume"
       }
     }
   ],
@@ -13,10 +19,10 @@
       "essential": true,
       "image": "107755324901.dkr.ecr.eu-west-3.amazonaws.com/compulsivecoders:latest",
       "memory": 250,
-      "name": "node",
+      "name": "compulsivecoders",
       "mountPoints": [
         {
-          "sourceVolume": "node",
+          "sourceVolume": "compulsivecoders-volume",
           "containerPath": "/usr/src/app",
           "sourcePath": "",
           "readOnly": true
@@ -26,6 +32,26 @@
         {
           "hostPort": 80,
           "containerPort": 3000
+        }
+      ]
+    },
+    {
+      "essential": true,
+      "image": "107755324901.dkr.ecr.eu-west-3.amazonaws.com/compulsivecoders-api:latest",
+      "memory": 250,
+      "name": "compulsivecoders-api",
+      "mountPoints": [
+        {
+          "sourceVolume": "compulsivecoders-api-volume",
+          "containerPath": "/usr/src/app",
+          "sourcePath": "",
+          "readOnly": true
+        }
+      ],
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 3001
         }
       ]
     }
