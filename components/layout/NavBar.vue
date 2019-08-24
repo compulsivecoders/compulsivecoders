@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <nav class="navbar" role="navigation" aria-label="main navigation" ref="navbar">
     <div class="navbar-brand">
       <a class="navbar-item" href="/">
         CompulsiveCoders
@@ -7,19 +7,20 @@
 
       <a
         role="button"
-        class="navbar-burger burger"
+        class="navbar-burger burger clickable"
         aria-label="menu"
         aria-expanded="false"
-        data-target="navbarBasicExample"
+        data-target="main-navbar"
+        ref="burger"
         @click="toggleBurger"
       >
-        <span aria-hidden="true">Hello</span>
-        <span aria-hidden="true">Hello bis</span>
-        <span aria-hidden="true">Hello ter</span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
       </a>
     </div>
 
-    <div id="navbarBasicExample" class="navbar-menu">
+    <div id="main-navbar" class="navbar-menu" ref="menu">
       <div class="navbar-start">
         <nuxt-link class="navbar-item is-active" to="/">
           Home
@@ -34,7 +35,7 @@
         </nuxt-link>
       </div>
 
-      <div class="navbar-end">
+      <div class="navbar-end is-hidden-mobile">
         <div class="navbar-item">
           <span class="icon has-text-info">
             <a href="/"><i class="fa fa-twitter" /></a>
@@ -47,9 +48,26 @@
 
 <script>
 export default {
+  data () {
+    return {
+      scrollPosition: null
+    }
+  },
+  mounted () {
+    window.addEventListener('scroll', this.updateScroll)
+  },
   methods: {
+    updateScroll () {
+      this.scrollPosition = window.scrollY
+      if (this.scrollPosition > 100) {
+        this.$refs.navbar.classList.add('is-fixed-top')
+      } else {
+        this.$refs.navbar.classList.remove('is-fixed-top')
+      }
+    },
     toggleBurger () {
-      console.log('hello')
+      this.$refs.menu.classList.toggle('is-active')
+      this.$refs.burger.classList.toggle('is-active')
     }
   }
 }

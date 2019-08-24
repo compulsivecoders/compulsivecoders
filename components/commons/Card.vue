@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '../../assets/colors.scss';
+  @import '../../assets/theme.scss';
 
   .card {
     .card-tag {
@@ -61,6 +61,13 @@ export default {
 
     .card-image {
       overflow: hidden;
+
+      .image {
+        @include mobile {
+          padding-top: 300px;
+        }
+      }
+
       img {
         object-fit: cover;
         opacity: 0.9;

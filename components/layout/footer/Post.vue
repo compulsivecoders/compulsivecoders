@@ -14,7 +14,7 @@
       <div class="post-meta">
         <div class="post-meta-content">
           <span class="post-date">
-              {{ date }}
+            {{ date }}
           </span>
         </div>
       </div>

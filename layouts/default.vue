@@ -24,6 +24,10 @@ export default {
 @import '../assets/theme';
 
 .main-container {
+  @include mobile {
+    margin-top: 0px;
+  }
+
   margin-top: 100px;
   max-width: 1200px;
   overflow: hidden;

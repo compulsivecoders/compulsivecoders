@@ -33,24 +33,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '../../assets/theme.scss';
+
   .footer {
     width: 100%;
     min-height: 100px;
     background-color: #1a1a1a;
     color: white;
-    padding: 0;
+    padding: 0px 100px 0px 100px;
+
+    @include mobile {
+      padding: 0px 30px 0px 30px;
+    }
 
     .column {
       padding: 2rem;
     }
 
     .footer-top-content {
-      padding: 80px 100px 30px 100px;
+      padding: 80px 0px 30px 0px;
       border-bottom: 1px solid #333;
     }
 
     .footer-bottom-content {
-      padding: 50px 100px 50px 100px;
+      padding: 50px 0px 50px 0px;
       text-align: right;
       font-family: 'MontserratSemiBold';
       font-size: 0.8rem;
