@@ -16,14 +16,16 @@ export default {
   .title-container {
     position: relative;
     overflow: hidden;
+    width: 100%;
   }
 
   h3 {
     color: white;
     font-size: 1.4rem;
     font-family: 'MontserratRegular';
+    font-weight: 700;
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 
     &::after {
       content: "";
