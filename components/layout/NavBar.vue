@@ -38,7 +38,7 @@
       <div class="navbar-end is-hidden-mobile">
         <div class="navbar-item">
           <span class="icon has-text-info">
-            <a href="/"><i class="fa fa-twitter" /></a>
+            <a href="https://twitter.com/compulsivCoders"><i class="fa fa-twitter" /></a>
           </span>
         </div>
       </div>
