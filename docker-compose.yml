@@ -1,6 +1,7 @@
 version: '3'
 services:
   web:
+    restart: on-failure
     build: .
     ports:
       - "8080:8080"
@@ -9,3 +10,17 @@ services:
       - .:/usr/src/app
       - /usr/src/app/node_modules
     command: yarn start
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:11-alpine
+    container_name: PostgresDB
+    restart: always
+    ports:
+      - "54320:5432"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=compulsive
+      - POSTGRES_PASSWORD=secret
+    volumes:
+      - /var/db/data/postgresql:/var/lib/postgresql

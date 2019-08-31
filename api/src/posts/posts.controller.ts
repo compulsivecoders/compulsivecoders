@@ -1,4 +1,4 @@
-import {Controller, Get, HttpStatus, Res} from '@nestjs/common';
+import {Controller, Get, HttpStatus, Param, Res} from '@nestjs/common';
 import { Response } from 'express';
 
 @Controller('posts')
@@ -109,4 +109,17 @@ export class PostsController {
       ]
     );
   }
+
+    @Get(':id')
+    getPost(@Res() res: Response, @Param() params) {
+        return res.status(HttpStatus.OK).json(
+            {
+                "imageSrc": "images/vuejs-root.png",
+                "title": "VueJS: Component template should contain exactly one root element",
+                "description": "While working on a VueJS component, you face the following error in your browser console (or in your JS linter output): Component template should contain exactly one root element. If you are using v-if on multiple elements, use v-else-if to chain them instead.",
+                "tag": "debug",
+                "date": "2 months ago"
+            }
+        )
+    }
 }
