@@ -3,11 +3,11 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { HealthController } from './health/health.controller';
-import { PostsModule } from "./posts/post.module";
-import {Connection} from "typeorm";
-import {TypeOrmModule} from "@nestjs/typeorm";
-import {ConfigModule} from "./config/config.module";
-import {ConfigService} from "./config/config.service";
+import { PostModule } from "./posts/post.module";
+import { Connection } from "typeorm";
+import { TypeOrmModule } from "@nestjs/typeorm";
+import { ConfigModule } from "./config/config.module";
+import { ConfigService } from "./config/config.service";
 
 @Module({
   imports: [
@@ -22,10 +22,12 @@ import {ConfigService} from "./config/config.service";
         database: configService.dbName,
         entities: [path.join(__dirname, '/**/*.entity{.ts,.js}')],
         synchronize: true,
+        logging: ['error', 'log', 'info', 'warn', 'log'],
+        migrations: ["migration/*{.ts,.js}"],
       }),
       inject: [ ConfigService ],
     }),
-    PostsModule
+    PostModule,
   ],
   controllers: [AppController, HealthController],
   providers: [AppService],

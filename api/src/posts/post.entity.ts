@@ -8,15 +8,17 @@ export class Post {
   @Column({ length: 256 })
   name: string;
 
-  @Column('text')
+  @Column({ type: 'text' })
   content: string;
 
   @Column()
   filename: string;
 
-  @Column('int')
+  @Column()
   views: number;
 
   @Column()
   isPublished: boolean;
 }
+
+export default Post;
