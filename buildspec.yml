@@ -12,8 +12,11 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
+      - cd frontend/
       - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG --target compulsivecoders .
       - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+      - cd ..
+      - cd api/
       - docker build -t $IMAGE_API_REPO_NAME:$IMAGE_TAG --target compulsivecoders-api .
       - docker tag $IMAGE_API_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_API_REPO_NAME:$IMAGE_TAG
   post_build:

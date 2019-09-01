@@ -1,9 +1,0 @@
-node_modules
-npm-debug*
-.nuxt
-.elasticbeanstalk/logs
-
-# API
-
-./api/node_modules
-.api/dist

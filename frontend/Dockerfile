@@ -17,26 +17,13 @@ COPY yarn.lock /usr/src/frontend/
 RUN yarn install --pure-lockfile
 
 COPY . /usr/src/frontend/
-RUN yarn build
-
-EXPOSE 3000
 # set app serving to permissive / assigned
 ENV NUXT_HOST=0.0.0.0
 # set app port
 ENV NUXT_PORT=3000
 
-CMD [ "yarn", "start" ]
-
-FROM node:12.8-alpine AS compulsivecoders-api
-
-RUN mkdir -p /usr/src/api
-WORKDIR /usr/src/api
-
-COPY ./api /usr/src/api/
-RUN yarn install
-
 RUN yarn build
 
-EXPOSE 3001
+EXPOSE 3000
 
-CMD [ "yarn", "start:prod" ]
+CMD [ "yarn", "start" ]

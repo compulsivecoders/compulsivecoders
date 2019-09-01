@@ -22,7 +22,7 @@ import { ConfigService } from "./config/config.service";
         database: configService.dbName,
         entities: [path.join(__dirname, '/**/*.entity{.ts,.js}')],
         synchronize: true,
-        logging: ['error', 'log', 'info', 'warn', 'log'],
+        logging: 'all',
         migrations: ["migration/*{.ts,.js}"],
       }),
       inject: [ ConfigService ],

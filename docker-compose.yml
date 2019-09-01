@@ -1,14 +1,27 @@
 version: '3.7'
 services:
-  web:
-    restart: on-failure
-    build: .
+  frontend:
+    image: compulsivecoders
+    build: ./frontend
     ports:
       - "8080:8080"
       - "3000:3000"
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
+    restart: on-failure
+    command: yarn start
+    depends_on:
+      - api
+  api:
+    image: compulsivecoders-api
+    build: ./api
+    ports:
+      - "3001:3001"
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    restart: on-failure
     command: yarn start
     depends_on:
       - postgres
