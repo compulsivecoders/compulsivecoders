@@ -1,6 +1,5 @@
 FROM node:12.8-alpine AS compulsivecoders-api
 
-RUN mkdir -p /usr/src/api
 WORKDIR /usr/src/api
 
 # Install app dependencies

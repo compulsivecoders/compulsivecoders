@@ -7,7 +7,6 @@ FROM node:12.8-alpine AS compulsivecoders
 #USER appuser
 
 # Create app directory
-RUN mkdir -p /usr/src/frontend
 WORKDIR /usr/src/frontend
 
 # Install app dependencies
