@@ -2,87 +2,57 @@
   <div class="columns">
     <div class="column">
       <div class="field">
-        <label class="label">Name</label>
+        <label class="label">Title</label>
         <div class="control">
-          <input class="input" type="text" placeholder="Text input">
+          <input class="input is-small" type="text" placeholder="Title">
         </div>
       </div>
-
       <div class="field">
-        <label class="label">Username</label>
-        <div class="control has-icons-left has-icons-right">
-          <input class="input is-success" type="text" placeholder="Text input" value="bulma">
-          <span class="icon is-small is-left">
-      <i class="fas fa-user"></i>
-    </span>
-          <span class="icon is-small is-right">
-      <i class="fas fa-check"></i>
-    </span>
-        </div>
-        <p class="help is-success">This username is available</p>
-      </div>
-
-      <div class="field">
-        <label class="label">Email</label>
-        <div class="control has-icons-left has-icons-right">
-          <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
-          <span class="icon is-small is-left">
-      <i class="fas fa-envelope"></i>
-    </span>
-          <span class="icon is-small is-right">
-      <i class="fas fa-exclamation-triangle"></i>
-    </span>
-        </div>
-        <p class="help is-danger">This email is invalid</p>
-      </div>
-
-      <div class="field">
-        <label class="label">Subject</label>
+        <label class="label">Slug</label>
         <div class="control">
-          <div class="select">
+          <input class="input is-small" type="text" placeholder="your-slug">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Category</label>
+        <div class="control">
+          <div class="select is-small">
             <select>
-              <option>Select dropdown</option>
-              <option>With options</option>
+              <option>Tech</option>
+              <option>Debug</option>
             </select>
           </div>
         </div>
       </div>
-
       <div class="field">
-        <label class="label">Message</label>
+        <label class="label">Thumbnail URL</label>
         <div class="control">
-          <textarea class="textarea" placeholder="Textarea"></textarea>
+          <input class="input is-small" type="text" placeholder="https://">
         </div>
       </div>
-
       <div class="field">
+        <label class="label">Cover URL</label>
         <div class="control">
-          <label class="checkbox">
-            <input type="checkbox">
-            I agree to the <a href="#">terms and conditions</a>
-          </label>
+          <input class="input is-small" type="text" placeholder="https://">
         </div>
       </div>
-
       <div class="field">
+        <label class="label">Content</label>
         <div class="control">
-          <label class="radio">
-            <input type="radio" name="question">
-            Yes
-          </label>
-          <label class="radio">
-            <input type="radio" name="question">
-            No
-          </label>
+          <textarea class="textarea is-small" placeholder="<h1>Hello World</h1>" />
         </div>
       </div>
-
+      <div class="field">
+        <label class="label">Author</label>
+        <div class="control">
+          <input class="input is-small" type="text" placeholder="Albert Einstein">
+        </div>
+      </div>
       <div class="field is-grouped">
         <div class="control">
-          <button class="button is-link">Submit</button>
-        </div>
-        <div class="control">
-          <button class="button is-text">Cancel</button>
+          <button class="button is-link">
+            Save
+          </button>
         </div>
       </div>
     </div>
@@ -93,7 +63,7 @@
 
 export default {
   asyncData ({ store, params, app: { $axios } }) {
-    return { post: params.slug }
+    return { slug: params.slug, category: params.category }
   }
 }
 </script>

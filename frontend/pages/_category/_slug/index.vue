@@ -1,7 +1,7 @@
 <template>
   <div class="columns">
     <div class="column">
-      {{ post }}COucou
+      Slug: {{ post }}
     </div>
   </div>
 </template>
@@ -10,7 +10,7 @@
 
 export default {
   asyncData ({ store, params, app: { $axios } }) {
-    return { post: params.slug }
+    return { slug: params.slug }
   }
 }
 </script>
