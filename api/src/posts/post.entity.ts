@@ -6,13 +6,25 @@ export class Post {
   id: number;
 
   @Column({ length: 256 })
-  name: string;
+  title: string;
 
   @Column({ type: 'text' })
   content: string;
 
   @Column()
-  filename: string;
+  cover: string;
+
+  @Column()
+  thumbnail: string;
+
+  @Column()
+  slug: string
+
+  @Column()
+  category: string
+
+  @Column()
+  author: string
 
   @Column()
   views: number;
