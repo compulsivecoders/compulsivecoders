@@ -22,7 +22,14 @@ services:
     volumes:
       - ./api:/usr/src/api
       - /usr/src/api/node_modules
-    command: yarn start
+    environment:
+      - BASE_URL=test
+      - DB_NAME=postgres
+      - DB_HOSTNAME=192.168.64.3
+      - DB_USERNAME=compulsive
+      - DB_PASSWORD=secret
+      - DB_PORT=54320
+    command: yarn start:prod
     depends_on:
       - postgres
   postgres:

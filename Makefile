@@ -6,4 +6,6 @@ front-lint:
 	docker-compose exec frontend yarn run lint
 front-sh:
 	docker-compose exec frontend sh
+api-build:
+	docker-compose exec api yarn build
 
