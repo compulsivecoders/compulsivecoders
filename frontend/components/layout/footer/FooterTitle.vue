@@ -1,14 +1,19 @@
 <template>
   <div class="title-container">
-    <h3 class="title-hr">{{ title }}</h3>
+    <h3 class="title-hr">
+      {{ title }}
+    </h3>
   </div>
 </template>
 
 <script>
 export default {
-  props: [
-    'title'
-  ]
+  props: {
+    title: {
+      type: String,
+      default: ''
+    }
+  }
 }
 </script>
 

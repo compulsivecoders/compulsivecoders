@@ -1,26 +1,26 @@
 <template>
-  <nav class="navbar" role="navigation" aria-label="main navigation" ref="navbar">
+  <nav ref="navbar" class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="/">
         CompulsiveCoders
       </a>
 
       <a
+        ref="burger"
         role="button"
         class="navbar-burger burger clickable"
         aria-label="menu"
         aria-expanded="false"
         data-target="main-navbar"
-        ref="burger"
         @click="toggleBurger"
       >
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
+        <span aria-hidden="true" />
+        <span aria-hidden="true" />
+        <span aria-hidden="true" />
       </a>
     </div>
 
-    <div id="main-navbar" class="navbar-menu" ref="menu">
+    <div id="main-navbar" ref="menu" class="navbar-menu">
       <div class="navbar-start">
         <nuxt-link class="navbar-item is-active" to="/">
           Home

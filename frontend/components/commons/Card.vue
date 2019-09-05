@@ -24,10 +24,36 @@
 
 <script>
 export default {
-  props: [
-    'imageSrc', 'description', 'link', 'title', 'ratio', 'tag', 'date'
-  ]
-
+  props: {
+    imageSrc: {
+      type: String,
+      default: ''
+    },
+    description: {
+      type: String,
+      default: ''
+    },
+    link: {
+      type: String,
+      default: ''
+    },
+    title: {
+      type: String,
+      default: ''
+    },
+    ratio: {
+      type: String,
+      default: ''
+    },
+    tag: {
+      type: String,
+      default: ''
+    },
+    date: {
+      type: String,
+      default: ''
+    }
+  }
 }
 </script>
 
