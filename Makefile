@@ -4,3 +4,6 @@ front-test:
 	docker-compose exec frontend yarn run test
 front-lint:
 	docker-compose exec frontend yarn run lint
+front-sh:
+	docker-compose exec frontend sh
+

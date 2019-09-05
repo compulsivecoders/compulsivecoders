@@ -1,7 +1,7 @@
 <template>
   <div class="columns">
     <div class="column">
-      {{ post }}
+      {{ post }}COucou
     </div>
   </div>
 </template>
