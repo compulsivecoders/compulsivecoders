@@ -1,35 +1,41 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn} from 'typeorm';
 
-@Entity()
+@Entity('posts')
 export class Post {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ length: 256 })
+  @CreateDateColumn()
+  created_at: Date;
+
+  @UpdateDateColumn()
+  updated_at: Date;
+
+  @Column({ type: 'varchar', length: 256 })
   title: string;
 
   @Column({ type: 'text' })
   content: string;
 
-  @Column()
+  @Column({ type: 'text' })
   cover: string;
 
-  @Column()
+  @Column({ type: 'text' })
   thumbnail: string;
 
-  @Column()
-  slug: string
+  @Column({ type: 'text' })
+  slug: string;
 
-  @Column()
-  category: string
+  @Column({ type: 'varchar', length: 256 })
+  category: string;
 
-  @Column()
-  author: string
+  @Column({ type: 'varchar', length: 128 })
+  author: string;
 
-  @Column()
+  @Column({ type: 'bigint' })
   views: number;
 
-  @Column()
+  @Column({ type: 'bool'})
   isPublished: boolean;
 }
 

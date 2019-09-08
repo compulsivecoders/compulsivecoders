@@ -21,9 +21,14 @@ import { ConfigService } from "./config/config.service";
         password: configService.dbPassword,
         database: configService.dbName,
         entities: [path.join(__dirname, '/**/*.entity{.ts,.js}')],
-        synchronize: true,
-        logging: 'all',
-        migrations: ["migration/*{.ts,.js}"],
+        synchronize: configService.nodeEnv !== 'production',
+        logging:  configService.nodeEnv !== 'production' ? 'all' : false,
+        migrations: [path.join(__dirname, "/migrations/*{.ts,.js}")],
+        migrationsRun: false,
+        dropSchema: false,
+        cli: {
+          migrationsDir: "src/migrations"
+        }
       }),
       inject: [ ConfigService ],
     }),

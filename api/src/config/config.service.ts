@@ -30,8 +30,8 @@ export class ConfigService {
     private validateInput(envConfig: EnvConfig): EnvConfig {
         const envVarsSchema: Joi.ObjectSchema = Joi.object({
             NODE_ENV: Joi.string()
-              .valid(['development', 'production', 'test', 'provision'])
-              .default('development'),
+              .valid(['local', 'production', 'test'])
+              .default('production'),
             DB_NAME: Joi.string().required(),
             DB_HOSTNAME: Joi.string().required(),
             DB_USERNAME: Joi.string().required(),
