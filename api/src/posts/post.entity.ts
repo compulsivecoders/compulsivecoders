@@ -1,7 +1,7 @@
-import {Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn} from 'typeorm';
+import {Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity} from 'typeorm';
 
 @Entity('posts')
-export class Post {
+export class Post extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -13,6 +13,9 @@ export class Post {
 
   @Column({ type: 'varchar', length: 256 })
   title: string;
+
+  @Column({ type: 'text' })
+  description: string;
 
   @Column({ type: 'text' })
   content: string;
