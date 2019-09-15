@@ -1,4 +1,11 @@
-import {Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity} from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+  BaseEntity,
+} from 'typeorm';
 
 @Entity('posts')
 export class Post extends BaseEntity {
@@ -38,7 +45,7 @@ export class Post extends BaseEntity {
   @Column({ type: 'bigint' })
   views: number;
 
-  @Column({ type: 'bool'})
+  @Column({ type: 'bool' })
   isPublished: boolean;
 }
 

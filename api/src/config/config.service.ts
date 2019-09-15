@@ -2,74 +2,73 @@ import * as dotenv from 'dotenv';
 import * as Joi from '@hapi/joi';
 import * as fs from 'fs';
 
-
 export interface EnvConfig {
-    [key: string]: string;
+  [key: string]: string;
 }
 
 export class ConfigService {
-    private readonly envConfig: { [key: string]: string };
+  private readonly envConfig: { [key: string]: string };
 
-    constructor(filePath: string) {
-        if (fs.existsSync(filePath)) {
-            const config = dotenv.parse(fs.readFileSync(filePath))
-            this.envConfig = this.validateInput(config);
-        } else {
-            this.envConfig = this.validateInput(process.env);
-        }
+  constructor(filePath: string) {
+    if (fs.existsSync(filePath)) {
+      const config = dotenv.parse(fs.readFileSync(filePath));
+      this.envConfig = this.validateInput(config);
+    } else {
+      this.envConfig = this.validateInput(process.env);
     }
+  }
 
-    get(key: string): string {
-        return this.envConfig[key];
+  get(key: string): string {
+    return this.envConfig[key];
+  }
+
+  /**
+   * Ensures all needed variables are set, and returns the validated JavaScript object
+   * including the applied default values.
+   */
+  private validateInput(envConfig: EnvConfig): EnvConfig {
+    const envVarsSchema: Joi.ObjectSchema = Joi.object({
+      NODE_ENV: Joi.string()
+        .valid(['local', 'production', 'test'])
+        .default('production'),
+      DB_NAME: Joi.string().required(),
+      DB_HOSTNAME: Joi.string().required(),
+      DB_USERNAME: Joi.string().required(),
+      DB_PASSWORD: Joi.string().required(),
+      DB_PORT: Joi.number().default(5432),
+    }).unknown(true);
+
+    const { error, value: validatedEnvConfig } = Joi.validate(
+      envConfig,
+      envVarsSchema,
+    );
+    if (error) {
+      throw new Error(`Config validation error: ${error.message}`);
     }
+    return validatedEnvConfig;
+  }
 
-    /**
-     * Ensures all needed variables are set, and returns the validated JavaScript object
-     * including the applied default values.
-     */
-    private validateInput(envConfig: EnvConfig): EnvConfig {
-        const envVarsSchema: Joi.ObjectSchema = Joi.object({
-            NODE_ENV: Joi.string()
-              .valid(['local', 'production', 'test'])
-              .default('production'),
-            DB_NAME: Joi.string().required(),
-            DB_HOSTNAME: Joi.string().required(),
-            DB_USERNAME: Joi.string().required(),
-            DB_PASSWORD: Joi.string().required(),
-            DB_PORT: Joi.number().default(5432),
-        }).unknown(true);
+  get nodeEnv(): string {
+    return this.envConfig.NODE_ENV;
+  }
 
-        const { error, value: validatedEnvConfig } = Joi.validate(
-          envConfig,
-          envVarsSchema,
-        );
-        if (error) {
-            throw new Error(`Config validation error: ${error.message}`);
-        }
-        return validatedEnvConfig;
-    }
+  get dbName(): string {
+    return this.envConfig.DB_NAME;
+  }
 
-    get nodeEnv(): string {
-        return this.envConfig.NODE_ENV;
-    }
+  get dbHost(): string {
+    return this.envConfig.DB_HOSTNAME;
+  }
 
-    get dbName(): string {
-        return this.envConfig.DB_NAME;
-    }
+  get dbUsername(): string {
+    return this.envConfig.DB_USERNAME;
+  }
 
-    get dbHost(): string {
-        return this.envConfig.DB_HOSTNAME;
-    }
+  get dbPassword(): string {
+    return this.envConfig.DB_PASSWORD;
+  }
 
-    get dbUsername(): string {
-        return this.envConfig.DB_USERNAME;
-    }
-
-    get dbPassword(): string {
-        return this.envConfig.DB_PASSWORD;
-    }
-
-    get dbPort(): number {
-        return Number(this.envConfig.DB_PORT);
-    }
+  get dbPort(): number {
+    return Number(this.envConfig.DB_PORT);
+  }
 }
