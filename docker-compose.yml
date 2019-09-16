@@ -27,7 +27,7 @@ services:
       - DB_USERNAME=compulsive
       - DB_PASSWORD=secret
       - DB_PORT=54320
-    command: yarn start
+    command: yarn start:dev
     depends_on:
       - postgres
   postgres:
