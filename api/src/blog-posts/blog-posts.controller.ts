@@ -3,7 +3,7 @@ import { Response } from 'express';
 import BlogPost from './blog-post.entity';
 import {CreateBlogPostDto} from "./create-blog-post.dto";
 
-@Controller('blog-posts')
+@Controller('posts')
 export class BlogPostsController {
   @Get()
   getPosts(@Res() res: Response) {
@@ -77,7 +77,7 @@ export class BlogPostsController {
     ]);
   }
 
-  @Get(':category')
+  @Get('category/:category')
   async getPostsByCategory(@Res() res: Response, @Param() params) {
     const postsForCategory = await BlogPost.find({ category: params.category });
 
@@ -94,7 +94,7 @@ export class BlogPostsController {
     );
   }
 
-  @Get(':slug')
+  @Get('slug/:slug')
   async getPostBySlug(@Res() res: Response, @Param() params) {
     const post = await BlogPost.findOne({ slug: params.slug });
 
