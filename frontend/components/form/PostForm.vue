@@ -107,8 +107,8 @@ export default {
         slug: this.internalSlug,
         description: this.internalDescription,
         category: this.internalCategory,
-        thumbnailUrl: this.internalThumbnailUrl,
-        coverUrl: this.internalCoverUrl,
+        thumbnail: this.internalThumbnailUrl,
+        cover: this.internalCoverUrl,
         content: this.internalContent,
         author: this.internalAuthor,
         secret: this.internalSecret

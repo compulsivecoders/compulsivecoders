@@ -14,7 +14,9 @@ export default {
   },
   methods: {
     createPost (payload) {
-      this.$axios.post('/posts', payload)
+      this.$axios.post('/posts', payload).then((response) => {
+        this.$router.push('/admin/edit/' + response.data.id)
+      })
     }
   }
 }
