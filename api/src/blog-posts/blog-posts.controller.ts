@@ -67,9 +67,9 @@ export class BlogPostsController {
     );
   }
 
-  @Put('admin/update')
-  async update(@Body() updateBlogPostDto: UpdateBlogPostDto, @Res() res: Response): Promise<any> {
-    const blogPost = await BlogPost.findOne({ id: updateBlogPostDto.id })
+  @Put(':id')
+  async update(@Param() params, @Body() updateBlogPostDto: UpdateBlogPostDto, @Res() res: Response): Promise<any> {
+    const blogPost = await BlogPost.findOne({ id: params.id })
 
     if (blogPost === undefined) {
       return res.status(HttpStatus.NOT_FOUND)
@@ -88,7 +88,7 @@ export class BlogPostsController {
     })
   }
 
-  @Post('admin/create')
+  @Post()
   async create(@Body() createBlogPostDto: CreateBlogPostDto, @Res() res: Response): Promise<any> {
     const blogPost = new BlogPost();
     blogPost.title = createBlogPostDto.title;

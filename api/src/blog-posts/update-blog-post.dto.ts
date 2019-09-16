@@ -1,5 +1,4 @@
 export class UpdateBlogPostDto {
-  readonly id: number;
   readonly title: string;
   readonly slug: string;
   readonly category: string;
