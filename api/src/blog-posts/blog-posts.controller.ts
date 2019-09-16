@@ -123,6 +123,7 @@ export class BlogPostsController {
     blogPost.title = createBlogPostDto.title;
     blogPost.slug = createBlogPostDto.slug;
     blogPost.category = createBlogPostDto.category;
+    blogPost.description = createBlogPostDto.description;
     blogPost.thumbnail = createBlogPostDto.thumbnail;
     blogPost.cover = createBlogPostDto.cover;
     blogPost.content = createBlogPostDto.content;
