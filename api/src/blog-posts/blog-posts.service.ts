@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Post } from './post.entity';
+import { BlogPost } from './blog-post.entity';
 
 @Injectable()
-export class PostService {
+export class BlogPostsService {
   constructor(
-    @InjectRepository(Post)
-    private readonly postRepository: Repository<Post>,
+    @InjectRepository(BlogPost)
+    private readonly postRepository: Repository<BlogPost>,
   ) {}
 
-  findAll(): Promise<Post[]> {
+  findAll(): Promise<BlogPost[]> {
     return this.postRepository.find();
   }
 }

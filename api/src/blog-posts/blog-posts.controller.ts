@@ -1,9 +1,10 @@
-import { Controller, Get, HttpStatus, Param, Res } from '@nestjs/common';
+import {Controller, Get, Post, HttpStatus, Param, Res, Body} from '@nestjs/common';
 import { Response } from 'express';
-import Post from './post.entity';
+import BlogPost from './blog-post.entity';
+import {CreateBlogPostDto} from "./create-blog-post.dto";
 
-@Controller('posts')
-export class PostsController {
+@Controller('blog-posts')
+export class BlogPostsController {
   @Get()
   getPosts(@Res() res: Response) {
     return res.status(HttpStatus.OK).json([
@@ -78,7 +79,7 @@ export class PostsController {
 
   @Get(':category')
   async getPostsByCategory(@Res() res: Response, @Param() params) {
-    const postsForCategory = await Post.find({ category: params.category });
+    const postsForCategory = await BlogPost.find({ category: params.category });
 
     return res.status(HttpStatus.OK).json(
       postsForCategory.map(post => ({
@@ -93,18 +94,19 @@ export class PostsController {
     );
   }
 
-  @Get(':id')
-  async getPost(@Res() res: Response, @Param() params): Promise<any> {
-    const post = await Post.findOne({ id: params.id });
+  @Get(':slug')
+  async getPostBySlug(@Res() res: Response, @Param() params) {
+    const post = await BlogPost.findOne({ slug: params.slug });
 
     return res.status(HttpStatus.OK).json({
-      imageSrc: post.cover,
-      title: post.title,
-      description: post.description,
-      tag: 'tech',
-      slug: post.slug,
-      category: post.category,
-      date: post.created_at,
-    });
+        imageSrc: post.cover,
+        title: post.title,
+        description: post.description,
+        tag: 'tech',
+        slug: post.slug,
+        category: post.category,
+        date: post.created_at,
+      }
+    );
   }
 }

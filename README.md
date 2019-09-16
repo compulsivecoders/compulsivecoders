@@ -22,4 +22,5 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 
 ## Database migrations
 To generate migrations, update your entities and then use `yarn run typeorm migration:generate` 
-to generate the migration file
+
+To run migrations, use `yarn run typeorm migration:run`

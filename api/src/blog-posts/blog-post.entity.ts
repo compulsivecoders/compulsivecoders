@@ -7,8 +7,8 @@ import {
   BaseEntity,
 } from 'typeorm';
 
-@Entity('posts')
-export class Post extends BaseEntity {
+@Entity('blog_posts')
+export class BlogPost extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -49,4 +49,4 @@ export class Post extends BaseEntity {
   isPublished: boolean;
 }
 
-export default Post;
+export default BlogPost;
