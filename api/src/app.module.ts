@@ -3,7 +3,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { HealthController } from './health/health.controller';
-import { BlogPostsModule } from './posts/blog-posts.module';
+import { BlogPostsModule } from './blog-posts/blog-posts.module';
 import { Connection } from 'typeorm';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from './config/config.module';
