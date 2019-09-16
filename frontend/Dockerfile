@@ -20,6 +20,8 @@ COPY . /usr/src/frontend/
 ENV NUXT_HOST=0.0.0.0
 # set app port
 ENV NUXT_PORT=3000
+ARG ARG_BASE_URL
+ENV BASE_URL=$ARG_BASE_URL
 
 RUN printenv
 
