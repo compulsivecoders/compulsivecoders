@@ -47,7 +47,7 @@ export default {
     Card
   },
   asyncData ({ store, params, app: { $axios } }) {
-    return $axios.get('/blog-posts/' + params.category)
+    return $axios.get('/posts/' + params.category)
       .then((data) => {
         return { posts: data.data }
       })

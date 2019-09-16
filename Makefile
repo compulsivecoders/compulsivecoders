@@ -12,4 +12,5 @@ api-install:
 	docker-compose run api yarn install
 front-install:
 	docker-compose run frontend yarn install
-
+api-migration:
+	docker-compose run api yarn run typeorm migration:run

@@ -26,11 +26,11 @@
           Home
         </nuxt-link>
 
-        <nuxt-link class="navbar-item" to="/category/tech">
+        <nuxt-link class="navbar-item" to="/tech">
           Tech
         </nuxt-link>
 
-        <nuxt-link class="navbar-item" to="/category/debug">
+        <nuxt-link class="navbar-item" to="/debug">
           Debug
         </nuxt-link>
       </div>
