@@ -8,7 +8,6 @@ services:
       - "3000:3000"
     volumes:
       - ./frontend:/usr/src/frontend
-      - /usr/src/frontend/node_modules
     environment:
       - BASE_URL=http://api:3001
     command: yarn dev
@@ -21,7 +20,6 @@ services:
       - "3001:3001"
     volumes:
       - ./api:/usr/src/api
-      - /usr/src/api/node_modules
     environment:
       - BASE_URL=test
       - DB_NAME=postgres

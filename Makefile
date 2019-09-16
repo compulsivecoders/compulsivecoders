@@ -8,4 +8,8 @@ front-sh:
 	docker-compose exec frontend sh
 api-build:
 	docker-compose run api yarn build
+api-install:
+	docker-compose run api yarn install
+front-install:
+	docker-compose run frontend yarn install
 
