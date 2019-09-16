@@ -42,10 +42,10 @@ export class BlogPost extends BaseEntity {
   @Column({ type: 'varchar', length: 128 })
   author: string;
 
-  @Column({ type: 'bigint' })
+  @Column({ type: 'bigint', default: 0 })
   views: number;
 
-  @Column({ type: 'bool' })
+  @Column({ type: 'bool', default: false })
   isPublished: boolean;
 }
 
