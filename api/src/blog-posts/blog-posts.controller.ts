@@ -1,4 +1,4 @@
-import {Controller, Get, Post, HttpStatus, Param, Res, Body, Put} from '@nestjs/common';
+import {Controller, Get, Post, HttpStatus, Param, Res, Body, Put, Query} from '@nestjs/common';
 import { Response } from 'express';
 import BlogPost from './blog-post.entity';
 import { CreateBlogPostDto } from "./create-blog-post.dto";
@@ -7,8 +7,17 @@ import { UpdateBlogPostDto } from "./update-blog-post.dto";
 @Controller('posts')
 export class BlogPostsController {
   @Get()
-  async getPosts(@Res() res: Response) {
-    const allPosts = await BlogPost.find();
+  async getPosts(@Res() res: Response, @Query() query ) {
+    const queryFilters = {};
+
+    if ('category' in query) {
+      queryFilters['category'] = query.category;
+    }
+    if ('slug' in query) {
+      queryFilters['slug'] = query.slug;
+    }
+
+    const allPosts = await BlogPost.find(queryFilters);
 
     return res.status(HttpStatus.OK).json(
       allPosts.map(post => ({
@@ -24,47 +33,24 @@ export class BlogPostsController {
     );
   }
 
-  @Get(':category')
-  async getPostsByCategory(@Res() res: Response, @Param() params) {
-    const postsForCategory = await BlogPost.find({ category: params.category });
+  @Get(':id')
+  async getBlogPostById(@Res() res: Response, @Param('id') id) {
+    const post = await BlogPost.findOne({ id: id });
 
-    if (postsForCategory === undefined) {
-      return res.status(HttpStatus.NOT_FOUND)
-    }
-
-    return res.status(HttpStatus.OK).json(
-      postsForCategory.map(post => ({
-        id: post.id,
-        cover: post.cover,
-        thumbnail: post.thumbnail,
-        title: post.title,
-        description: post.description,
-        slug: post.slug,
-        category: post.category,
-        date: post.created_at,
-      })),
-    );
-  }
-
-  @Get(':category/:slug')
-  async getPostBySlug(@Res() res: Response, @Param() params) {
-    const post = await BlogPost.findOne({ category: params.category, slug: params.slug });
-
-    if (post === undefined) {
+    if (post == undefined) {
       return res.status(HttpStatus.NOT_FOUND)
     }
 
     return res.status(HttpStatus.OK).json({
-        id: post.id,
-        cover: post.cover,
-        thumbnail: post.thumbnail,
-        title: post.title,
-        description: post.description,
-        slug: post.slug,
-        category: post.category,
-        date: post.created_at,
-      }
-    );
+      id: post.id,
+      cover: post.cover,
+      thumbnail: post.thumbnail,
+      title: post.title,
+      description: post.description,
+      slug: post.slug,
+      category: post.category,
+      date: post.created_at,
+    })
   }
 
   @Put(':id')
