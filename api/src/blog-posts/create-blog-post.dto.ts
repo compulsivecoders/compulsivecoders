@@ -1,6 +1,6 @@
 export class CreateBlogPostDto {
   readonly title: string;
-  readonly slug: number;
+  readonly slug: string;
   readonly category: string;
   readonly thumbnail: string;
   readonly cover: string;

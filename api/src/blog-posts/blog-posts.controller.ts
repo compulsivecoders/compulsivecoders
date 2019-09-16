@@ -110,11 +110,24 @@ export class BlogPostsController {
         imageSrc: post.cover,
         title: post.title,
         description: post.description,
-        tag: 'tech',
         slug: post.slug,
         category: post.category,
         date: post.created_at,
       }
     );
+  }
+
+  @Post('admin/create')
+  async create(@Body() createBlogPostDto: CreateBlogPostDto, @Res() res: Response): Promise<any> {
+    const blogPost = new BlogPost();
+    blogPost.title = createBlogPostDto.title;
+    blogPost.slug = createBlogPostDto.slug;
+    blogPost.category = createBlogPostDto.category;
+    blogPost.thumbnail = createBlogPostDto.thumbnail;
+    blogPost.cover = createBlogPostDto.cover;
+    blogPost.content = createBlogPostDto.content;
+    await blogPost.save();
+
+    return res.status(HttpStatus.CREATED)
   }
 }
