@@ -77,9 +77,13 @@ export class BlogPostsController {
     ]);
   }
 
-  @Get('category/:category')
+  @Get(':category')
   async getPostsByCategory(@Res() res: Response, @Param() params) {
     const postsForCategory = await BlogPost.find({ category: params.category });
+
+    if (postsForCategory === undefined) {
+      return res.status(HttpStatus.NOT_FOUND)
+    }
 
     return res.status(HttpStatus.OK).json(
       postsForCategory.map(post => ({
@@ -94,9 +98,13 @@ export class BlogPostsController {
     );
   }
 
-  @Get('slug/:slug')
+  @Get(':category/:slug')
   async getPostBySlug(@Res() res: Response, @Param() params) {
-    const post = await BlogPost.findOne({ slug: params.slug });
+    const post = await BlogPost.findOne({ category: params.category, slug: params.slug });
+
+    if (post === undefined) {
+      return res.status(HttpStatus.NOT_FOUND)
+    }
 
     return res.status(HttpStatus.OK).json({
         imageSrc: post.cover,
