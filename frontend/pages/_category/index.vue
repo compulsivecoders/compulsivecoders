@@ -32,8 +32,9 @@
         :image-src="post.imageSrc"
         :title="post.title"
         :description="post.description"
-        :tag="post.tag"
+        :category="post.category"
         :date="post.date"
+        :slug="post.slug"
       />
     </div>
   </div>

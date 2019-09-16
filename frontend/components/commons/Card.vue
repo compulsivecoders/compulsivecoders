@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <a class="card" :href="category + '/' + slug">
     <div class="card-image">
       <figure class="image clickable" :class="ratio">
         <img :src="imageSrc" :alt="title">
@@ -8,7 +8,7 @@
     <div class="card-content">
       <div class="content">
         <div class="card-tag">
-          {{ tag }}
+          {{ category }}
         </div>
         <h2 class="card-title">
           {{ title }}
@@ -19,7 +19,7 @@
     <div class="card-footer">
       <span class="publication-date">{{ date }}</span>
     </div>
-  </div>
+  </a>
 </template>
 
 <script>
@@ -45,7 +45,11 @@ export default {
       type: String,
       default: ''
     },
-    tag: {
+    category: {
+      type: String,
+      default: ''
+    },
+    slug: {
       type: String,
       default: ''
     },
