@@ -3,9 +3,16 @@ import { Response } from 'express';
 import BlogPost from './blog-post.entity';
 import { CreateBlogPostDto } from "./create-blog-post.dto";
 import { UpdateBlogPostDto } from "./update-blog-post.dto";
+import { ConfigService } from './../config/config.service'
 
 @Controller('posts')
 export class BlogPostsController {
+  private config: ConfigService;
+
+  constructor(config: ConfigService) {
+     this.config = config;
+  }
+
   @Get()
   async getPosts(@Res() res: Response, @Query() query ) {
     const queryFilters = {};
@@ -76,10 +83,14 @@ export class BlogPostsController {
 
   @Post()
   async create(@Body() createBlogPostDto: CreateBlogPostDto, @Res() res: Response): Promise<any> {
+    if (createBlogPostDto.secret !== this.config.get('SECRET_PASSWORD')) {
+      return res.status(HttpStatus.FORBIDDEN);
+    }
+
     const blogPost = new BlogPost();
     blogPost.title = createBlogPostDto.title;
     blogPost.slug = createBlogPostDto.slug;
-    blogPost.category = createBlogPostDto.category;
+    blogPost.category = createBlogPostDto.category.toLowerCase();
     blogPost.description = createBlogPostDto.description;
     blogPost.thumbnail = createBlogPostDto.thumbnail;
     blogPost.cover = createBlogPostDto.cover;

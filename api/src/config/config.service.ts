@@ -31,6 +31,7 @@ export class ConfigService {
       NODE_ENV: Joi.string()
         .valid(['local', 'production', 'test'])
         .default('production'),
+      SECRET_PASSWORD: Joi.string().required(),
       DB_NAME: Joi.string().required(),
       DB_HOSTNAME: Joi.string().required(),
       DB_USERNAME: Joi.string().required(),
