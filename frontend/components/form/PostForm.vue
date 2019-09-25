@@ -16,7 +16,7 @@
       <div class="field">
         <label class="label">Description</label>
         <div class="control">
-          <input v-model="internalDescription" class="input is-small" type="text" placeholder="your-slug">
+          <input v-model="internalDescription" class="input is-small" type="text" placeholder="Description">
         </div>
       </div>
       <div class="field">
@@ -25,6 +25,7 @@
           <div class="select is-small">
             <select v-model="internalCategory">
               <option>Tech</option>
+              <option>Maths</option>
               <option>Debug</option>
             </select>
           </div>

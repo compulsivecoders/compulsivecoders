@@ -33,6 +33,10 @@
         <nuxt-link class="navbar-item" to="/debug">
           Debug
         </nuxt-link>
+
+        <nuxt-link class="navbar-item" to="/maths">
+          Maths
+        </nuxt-link>
       </div>
 
       <div class="navbar-end is-hidden-mobile">
