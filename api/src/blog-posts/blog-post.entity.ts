@@ -1,11 +1,14 @@
 import {
   Entity,
   Column,
+  ManyToMany,
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  JoinTable,
   BaseEntity,
 } from 'typeorm';
+import Tag from "./tag.entity";
 
 @Entity('blog_posts')
 export class BlogPost extends BaseEntity {
@@ -36,8 +39,8 @@ export class BlogPost extends BaseEntity {
   @Column({ type: 'text' })
   slug: string;
 
-  @Column({ type: 'varchar', length: 256 })
-  category: string;
+  @Column({ type: 'varchar', length: 256, nullable: true })
+  mainTag: string;
 
   @Column({ type: 'varchar', length: 128 })
   author: string;
@@ -47,6 +50,10 @@ export class BlogPost extends BaseEntity {
 
   @Column({ type: 'bool', default: false })
   isPublished: boolean;
+
+  @ManyToMany(type => Tag)
+  @JoinTable({ name: 'blog_posts_tags'})
+  tags: Tag[];
 }
 
 export default BlogPost;

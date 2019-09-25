@@ -20,10 +20,10 @@
         </div>
       </div>
       <div class="field">
-        <label class="label">Category</label>
+        <label class="label">Main Tag</label>
         <div class="control">
           <div class="select is-small">
-            <select v-model="internalCategory">
+            <select v-model="internalMainTag">
               <option>Tech</option>
               <option>Maths</option>
               <option>Debug</option>
@@ -93,7 +93,7 @@ export default {
       internalTitle: null,
       internalSlug: null,
       internalDescription: null,
-      internalCategory: null,
+      internalMainTag: null,
       internalThumbnailUrl: null,
       internalCoverUrl: null,
       internalContent: null,
@@ -107,7 +107,7 @@ export default {
         title: this.internalTitle,
         slug: this.internalSlug,
         description: this.internalDescription,
-        category: this.internalCategory,
+        mainTag: this.internalMainTag,
         thumbnail: this.internalThumbnailUrl,
         cover: this.internalCoverUrl,
         content: this.internalContent,

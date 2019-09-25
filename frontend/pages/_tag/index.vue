@@ -8,7 +8,7 @@
         :image-src="post.thumbnail"
         :title="post.title"
         :description="post.description"
-        :category="post.category"
+        :main-tag="post.mainTag"
         :tag="post.tag"
         :date="post.date"
       />
@@ -21,7 +21,7 @@
         :image-src="post.thumbnail"
         :title="post.title"
         :description="post.description"
-        :category="post.category"
+        :main-tag="post.mainTag"
         :tag="post.tag"
         :date="post.date"
       />
@@ -34,7 +34,7 @@
         :image-src="post.thumbnail"
         :title="post.title"
         :description="post.description"
-        :category="post.category"
+        :main-tag="post.mainTag"
         :date="post.date"
         :slug="post.slug"
       />
@@ -50,7 +50,7 @@ export default {
     Card
   },
   asyncData ({ store, params, app: { $axios } }) {
-    return $axios.get('/posts/?category=' + params.category)
+    return $axios.get('/posts/?main_tag=' + params.mainTag)
       .then((data) => {
         return { posts: data.data }
       })

@@ -17,13 +17,12 @@ export class BlogPostsController {
   async getPosts(@Res() res: Response, @Query() query ) {
     const queryFilters = {};
 
-    if ('category' in query) {
-      queryFilters['category'] = query.category;
+    if ('main_tag' in query) {
+      queryFilters['mainTag'] = query.main_tag;
     }
     if ('slug' in query) {
       queryFilters['slug'] = query.slug;
     }
-
     const allPosts = await BlogPost.find(queryFilters);
 
     return res.status(HttpStatus.OK).json(
@@ -34,7 +33,7 @@ export class BlogPostsController {
         title: post.title,
         description: post.description,
         slug: post.slug,
-        category: post.category,
+        mainTag: post.mainTag,
         date: post.created_at,
       })),
     );
@@ -55,7 +54,7 @@ export class BlogPostsController {
       title: post.title,
       description: post.description,
       slug: post.slug,
-      category: post.category,
+      mainTag: post.mainTag,
       date: post.created_at,
     })
   }
@@ -70,7 +69,7 @@ export class BlogPostsController {
 
     blogPost.title = updateBlogPostDto.title;
     blogPost.slug = updateBlogPostDto.slug;
-    blogPost.category = updateBlogPostDto.category;
+    blogPost.mainTag = updateBlogPostDto.mainTag;
     blogPost.thumbnail = updateBlogPostDto.thumbnail;
     blogPost.cover = updateBlogPostDto.cover;
     blogPost.content = updateBlogPostDto.content;
@@ -90,7 +89,7 @@ export class BlogPostsController {
     const blogPost = new BlogPost();
     blogPost.title = createBlogPostDto.title;
     blogPost.slug = createBlogPostDto.slug;
-    blogPost.category = createBlogPostDto.category.toLowerCase();
+    blogPost.mainTag = createBlogPostDto.mainTag.toLowerCase();
     blogPost.description = createBlogPostDto.description;
     blogPost.thumbnail = createBlogPostDto.thumbnail;
     blogPost.cover = createBlogPostDto.cover;

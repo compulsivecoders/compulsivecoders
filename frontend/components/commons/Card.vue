@@ -1,5 +1,5 @@
 <template>
-  <a class="card" :href="category + '/' + slug">
+  <a class="card" :href="mainTag + '/' + slug">
     <div class="card-image">
       <figure class="image clickable" :class="ratio">
         <img :src="imageSrc" :alt="title">
@@ -8,7 +8,7 @@
     <div class="card-content">
       <div class="content">
         <div class="card-tag">
-          {{ category }}
+          {{ mainTag }}
         </div>
         <h2 class="card-title">
           {{ title }}
@@ -45,7 +45,7 @@ export default {
       type: String,
       default: ''
     },
-    category: {
+    mainTag: {
       type: String,
       default: ''
     },
