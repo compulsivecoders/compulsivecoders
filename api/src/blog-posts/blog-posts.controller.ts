@@ -45,7 +45,7 @@ export class BlogPostsController {
     const post = await BlogPost.findOne({ id: id });
 
     if (post == undefined) {
-      return res.status(HttpStatus.NOT_FOUND)
+      return res.status(HttpStatus.NOT_FOUND);
     }
 
     return res.status(HttpStatus.OK).json({
@@ -65,7 +65,7 @@ export class BlogPostsController {
     const blogPost = await BlogPost.findOne({ id: params.id })
 
     if (blogPost === undefined) {
-      return res.status(HttpStatus.NOT_FOUND)
+      return res.status(HttpStatus.NOT_FOUND);
     }
 
     blogPost.title = updateBlogPostDto.title;
@@ -78,7 +78,7 @@ export class BlogPostsController {
 
     return res.status(HttpStatus.OK).json({
       id: blogPost.id
-    })
+    });
   }
 
   @Post()
