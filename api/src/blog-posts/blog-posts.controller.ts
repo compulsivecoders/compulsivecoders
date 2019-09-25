@@ -35,6 +35,8 @@ export class BlogPostsController {
         slug: post.slug,
         mainTag: post.mainTag,
         date: post.created_at,
+        views: post.views,
+        content: post.content,
       })),
     );
   }
@@ -56,6 +58,8 @@ export class BlogPostsController {
       slug: post.slug,
       mainTag: post.mainTag,
       date: post.created_at,
+      views: post.views,
+      content: post.content,
     });
   }
 
