@@ -1,7 +1,7 @@
 <template>
-  <div class="columns">
-    <div class="column">
-      Slug: {{ post }}
+  <div class="container">
+    <div class="section">
+      {{ post.title }}
     </div>
   </div>
 </template>
@@ -10,7 +10,10 @@
 
 export default {
   asyncData ({ store, params, app: { $axios } }) {
-    return { slug: params.slug }
+    return $axios.get(`/posts/?category='${params.category}&slug=${params.slug}`)
+      .then((data) => {
+        return { post: data.data }
+      })
   }
 }
 </script>
