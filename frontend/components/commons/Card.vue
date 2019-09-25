@@ -1,5 +1,5 @@
 <template>
-  <a class="card" :href="mainTag + '/' + slug">
+  <nuxt-link class="card" :to="routeLink">
     <div class="card-image">
       <figure class="image clickable" :class="ratio">
         <img :src="imageSrc" :alt="title">
@@ -19,7 +19,7 @@
     <div class="card-footer">
       <span class="publication-date">{{ date }}</span>
     </div>
-  </a>
+  </nuxt-link>
 </template>
 
 <script>
@@ -56,6 +56,11 @@ export default {
     date: {
       type: String,
       default: ''
+    }
+  },
+  computed: {
+    routeLink () {
+      return `/${this.mainTag}/${this.slug}`
     }
   }
 }
