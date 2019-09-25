@@ -73,7 +73,7 @@ export default {
       font-size: 0.8rem;
     }
 
-    .card-title {
+    h2.card-title {
       font-family: 'MontserratSemiBold';
       font-size: 1.7rem;
       margin-top: 5px;
@@ -109,7 +109,7 @@ export default {
     }
 
     .card-footer {
-      padding-bottom: 20px;
+      padding-bottom: 30px;
 
       .publication-date {
         color: $grey;

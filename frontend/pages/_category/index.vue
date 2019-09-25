@@ -8,6 +8,7 @@
         :image-src="post.thumbnail"
         :title="post.title"
         :description="post.description"
+        :category="post.category"
         :tag="post.tag"
         :date="post.date"
       />
@@ -20,6 +21,7 @@
         :image-src="post.thumbnail"
         :title="post.title"
         :description="post.description"
+        :category="post.category"
         :tag="post.tag"
         :date="post.date"
       />
