@@ -51,7 +51,7 @@ export class BlogPost extends BaseEntity {
   @Column({ type: 'bool', default: false })
   isPublished: boolean;
 
-  @ManyToMany(type => Tag)
+  @ManyToMany(type => Tag, tag => tag.posts)
   @JoinTable({ name: 'blog_posts_tags'})
   tags: Tag[];
 }

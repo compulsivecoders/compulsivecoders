@@ -4,8 +4,9 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
-  BaseEntity,
+  BaseEntity, ManyToMany, JoinTable,
 } from 'typeorm';
+import BlogPost from "./blog-post.entity";
 
 @Entity('tags')
 export class Tag extends BaseEntity {
@@ -20,6 +21,9 @@ export class Tag extends BaseEntity {
 
   @Column({ type: 'varchar', length: 256 })
   name: string;
+
+  @ManyToMany(type => BlogPost, post => post.tags, { eager: true })
+  posts: BlogPost[];
 }
 
 export default Tag;

@@ -2,13 +2,25 @@ import {Controller, Get, Post, HttpStatus, Param, Res, Body, Put, Query} from '@
 import { Response } from 'express';
 import Tag from './tag.entity';
 
-@Controller('posts')
-export class BlogPostsController {
-  @Get(':tag/posts')
-  async getPosts(@Param('tag') tag, @Res() res: Response) {
+@Controller('tags')
+export class TagsController {
+  @Get(':tagName/posts')
+  async getPosts(@Param('tagName') tagName, @Res() res: Response) {
+
+    const tag = await Tag.findOne({ name: tagName});
+    const posts = tag.posts;
 
     return res.status(HttpStatus.OK).json(
-      {}
+      posts.map(post => ({
+        id: post.id,
+        cover: post.cover,
+        thumbnail: post.thumbnail,
+        title: post.title,
+        description: post.description,
+        slug: post.slug,
+        mainTag: post.mainTag,
+        date: post.created_at,
+      })),
     );
   }
 }
