@@ -30,16 +30,14 @@ export default {
         const highlightedBlock = document.createElement('pre')
         const languageBlock = block.getElementsByTagName('p')[0]
         if (languageBlock) {
-          const language = languageBlock.getElementsByTagName('language').className
+          const language = languageBlock.innerHTML
           block.removeChild(languageBlock)
 
-          if (language) {
-            highlightedBlock.innerHTML =
-              '<code class="hljs">' +
-              highlightJs.highlight(language, block.innerHTML).value +
-              '</code>'
-            block.parentNode.replaceChild(highlightedBlock, block)
-          }
+          highlightedBlock.innerHTML =
+            '<code class="hljs">' +
+            highlightJs.highlight(language, block.innerHTML).value +
+            '</code>'
+          block.parentNode.replaceChild(highlightedBlock, block)
         }
       })
     }
