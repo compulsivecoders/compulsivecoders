@@ -16,7 +16,7 @@
       <div class="field">
         <label class="label">Description</label>
         <div class="control">
-          <input v-model="internalDescription" class="input is-small" type="text" placeholder="Description">
+          <textarea v-model="internalDescription" class="textarea is-small" type="text" placeholder="Description" rows="2" />
         </div>
       </div>
       <div class="field">
@@ -46,7 +46,7 @@
       <div class="field">
         <label class="label">Content</label>
         <div class="control">
-          <textarea v-model="internalContent" class="textarea is-small" placeholder="<h1>Hello World</h1>" />
+          <textarea v-model="internalContent" class="textarea is-small" placeholder="<h1>Hello World</h1>" rows="10"/>
         </div>
       </div>
       <div class="field">
