@@ -15,6 +15,11 @@
 
 <script>
 import 'highlight.js/styles/dracula.css'
+function htmlDecode (input) {
+  const e = document.createElement('textarea')
+  e.innerHTML = input
+  return e.value
+}
 export default {
   asyncData ({ store, params, app: { $axios } }) {
     return $axios.get(`/posts/?category='${params.category}&slug=${params.slug}`)
@@ -32,10 +37,9 @@ export default {
         if (languageBlock) {
           const language = languageBlock.innerHTML
           block.removeChild(languageBlock)
-
           highlightedBlock.innerHTML =
             '<code class="hljs">' +
-            highlightJs.highlight(language, block.innerHTML).value +
+            highlightJs.highlight(language, htmlDecode(block.innerHTML.replace(/<p>/g, '').replace(/<\/p>/g, '\n'))).value +
             '</code>'
           block.parentNode.replaceChild(highlightedBlock, block)
         }

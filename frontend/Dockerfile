@@ -1,4 +1,4 @@
-FROM node:12.8-alpine AS compulsivecoders
+FROM node:12.8-stretch AS compulsivecoders
 
 # Create a group and user TODO many issues with access rights
 # alpine does use addgroup and adduser instead of regular debian useradd and usergroup
