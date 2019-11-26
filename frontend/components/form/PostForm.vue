@@ -160,5 +160,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  .column {
+    max-width: 100%;
+  }
 </style>
