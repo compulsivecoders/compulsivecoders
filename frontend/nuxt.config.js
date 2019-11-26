@@ -28,6 +28,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~/plugins/ck-editor', mode: 'client' }
   ],
   /*
   ** Nuxt.js dev-modules

@@ -6,6 +6,7 @@
       </h1>
       <p>Views: {{ post.views }}</p>
       <section>
+        <!-- eslint-disable-next-line -->
         <div v-html="post.content" />
       </section>
     </div>

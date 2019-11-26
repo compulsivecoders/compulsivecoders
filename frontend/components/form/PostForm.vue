@@ -46,7 +46,9 @@
       <div class="field">
         <label class="label">Content</label>
         <div class="control">
-          <textarea v-model="internalContent" class="textarea is-small" placeholder="<h1>Hello World</h1>" rows="10"/>
+          <client-only placeholder="Loading editor">
+            <ckeditor v-model="internalContent" :editor="editor" :config="{}" />
+          </client-only>
         </div>
       </div>
       <div class="field">
@@ -114,6 +116,7 @@ export default {
   },
   data () {
     return {
+      editor: null,
       internalTitle: null,
       internalSlug: null,
       internalDescription: null,
@@ -134,6 +137,9 @@ export default {
     this.internalCoverUrl = this.cover
     this.internalContent = this.content
     this.internalAuthor = this.author
+    if (window) {
+      this.editor = require('@ckeditor/ckeditor5-build-balloon')
+    }
   },
   methods: {
     submit () {

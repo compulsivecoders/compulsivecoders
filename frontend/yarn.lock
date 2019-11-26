@@ -711,6 +711,16 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@ckeditor/ckeditor5-build-balloon@^15.0.0":
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-build-balloon/-/ckeditor5-build-balloon-15.0.0.tgz#0903fbb012d26fb1fd2bf461964522de67815566"
+  integrity sha512-fXUJuv/yXyjAlsDRBr8b4kLc066A39qd12ZEdL/z2fa5q3lBaz4ylYloupCOVztDRlcGg3gb6eQTN2Wru2lNEg==
+
+"@ckeditor/ckeditor5-vue@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-vue/-/ckeditor5-vue-1.0.0.tgz#f1c22776fa625afa8603b2156406c5673bdb1bce"
+  integrity sha512-rrwuRQ/vHPnBDBhgOj/0y0QlJTmTJwPWF9QbyxJ/ThPFE8U8823HGZ6wKOCtXOzuNmGvFkXRKQULpXupo4URRw==
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.3.tgz#099139eaec7ebf07a27c1786a3ff64f39464d2ef"

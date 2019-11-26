@@ -9,7 +9,7 @@ services:
     volumes:
       - ./frontend:/usr/src/frontend
     environment:
-      - BASE_URL=http://192.168.64.2:3001
+      - BASE_URL=http://192.168.64.3:3001
     command: yarn dev
     depends_on:
       - api

@@ -13,6 +13,8 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-balloon": "^15.0.0",
+    "@ckeditor/ckeditor5-vue": "^1.0.0",
     "@nuxtjs/axios": "^5.6.0",
     "@nuxtjs/bulma": "^1.2.1",
     "@nuxtjs/font-awesome": "^1.0.4",
