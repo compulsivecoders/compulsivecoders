@@ -8,7 +8,10 @@ import PostForm from '../../../components/form/PostForm'
 export default {
   components: { PostForm },
   asyncData ({ store, params, app: { $axios } }) {
-    return { slug: params.slug, mainTag: params.mainTag }
+    return $axios.get(`/posts/${params.id}`)
+      .then((data) => {
+        return { post: data.data[0] }
+      })
   }
 }
 </script>

@@ -83,6 +83,30 @@ export default {
       type: String,
       default: ''
     },
+    description: {
+      type: String,
+      default: ''
+    },
+    mainTag: {
+      type: String,
+      default: ''
+    },
+    thumbnail: {
+      type: String,
+      default: ''
+    },
+    cover: {
+      type: String,
+      default: ''
+    },
+    content: {
+      type: String,
+      default: ''
+    },
+    author: {
+      type: String,
+      default: ''
+    },
     submitFunction: {
       type: Function,
       default: () => {}
@@ -100,6 +124,16 @@ export default {
       internalAuthor: null,
       internalSecret: null
     }
+  },
+  mounted () {
+    this.internalTitle = this.title
+    this.internalSlug = this.slug
+    this.internalDescription = this.description
+    this.internalMainTag = this.mainTag.charAt(0).toUpperCase() + this.mainTag.slice(1)
+    this.internalThumbnailUrl = this.thumbnail
+    this.internalCoverUrl = this.cover
+    this.internalContent = this.content
+    this.internalAuthor = this.author
   },
   methods: {
     submit () {

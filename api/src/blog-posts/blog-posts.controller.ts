@@ -43,9 +43,9 @@ export class BlogPostsController {
 
   @Get(':id')
   async getBlogPostById(@Res() res: Response, @Param('id') id) {
-    const post = await BlogPost.findOne({ id: id });
+    const post = await BlogPost.findOne({ id });
 
-    if (post == undefined) {
+    if (post === undefined) {
       return res.status(HttpStatus.NOT_FOUND);
     }
 
@@ -60,6 +60,7 @@ export class BlogPostsController {
       date: post.created_at,
       views: post.views,
       content: post.content,
+      author: post.author,
     });
   }
 
