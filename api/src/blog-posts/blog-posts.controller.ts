@@ -66,7 +66,11 @@ export class BlogPostsController {
 
   @Put(':id')
   async update(@Param() params, @Body() updateBlogPostDto: UpdateBlogPostDto, @Res() res: Response): Promise<any> {
-    const blogPost = await BlogPost.findOne({ id: params.id });
+    if (updateBlogPostDto.secret !== this.config.get('SECRET_PASSWORD')) {
+      return res.status(HttpStatus.FORBIDDEN);
+    }
+
+    let blogPost = await BlogPost.findOne({ id: params.id });
 
     if (blogPost === undefined) {
       return res.status(HttpStatus.NOT_FOUND);
@@ -79,6 +83,8 @@ export class BlogPostsController {
     blogPost.cover = updateBlogPostDto.cover;
     blogPost.content = updateBlogPostDto.content;
     blogPost.author = updateBlogPostDto.author;
+
+    blogPost = await blogPost.save();
 
     return res.status(HttpStatus.OK).json({
       id: blogPost.id,

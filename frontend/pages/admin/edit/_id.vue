@@ -8,6 +8,7 @@
     :cover="cover"
     :content="content"
     :author="author"
+    :submit-function="updatePost"
   />
 </template>
 
@@ -18,6 +19,7 @@ export default {
   components: { PostForm },
   data () {
     return {
+      id: null,
       title: null,
       slug: null,
       description: null,
@@ -33,6 +35,13 @@ export default {
       .then((data) => {
         return data.data
       })
+  },
+  methods: {
+    updatePost (payload) {
+      this.$axios.put('/posts/' + this.id, payload).then((response) => {
+        this.$router.push('/admin/edit/' + response.data.id)
+      })
+    }
   }
 }
 </script>
