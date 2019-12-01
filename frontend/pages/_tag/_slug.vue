@@ -1,26 +1,37 @@
 <template>
-  <div class="container">
-    <div class="section">
-      <h1 class="title">
-        {{ post.title }}
-      </h1>
-      <p>Views: {{ post.views }}</p>
-      <section>
-        <!-- eslint-disable-next-line -->
-        <div v-html="post.content" />
-      </section>
+  <div class="columns">
+    <div class="column is-8-desktop is-12-tablet">
+      <div class="post-section">
+        <h1 class="title">
+          {{ post.title }}
+        </h1>
+        <p>Views: {{ post.views }}</p>
+        <section>
+          <!-- eslint-disable-next-line -->
+          <div v-html="post.content" />
+        </section>
+      </div>
+    </div>
+    <div class="column is-hidden-touch">
+      <CategoryPosts
+        :tag="post.mainTag"
+        theme="light"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import 'highlight.js/styles/dracula.css'
+import CategoryPosts from '../../components/commons/CategoryPosts'
+
 function htmlDecode (input) {
   const e = document.createElement('textarea')
   e.innerHTML = input
   return e.value
 }
 export default {
+  components: { CategoryPosts },
   asyncData ({ store, params, app: { $axios } }) {
     return $axios.get(`/posts/?category='${params.category}&slug=${params.slug}`)
       .then((data) => {
@@ -49,6 +60,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+  .container {
+    max-width: 90%;
+  }
 </style>

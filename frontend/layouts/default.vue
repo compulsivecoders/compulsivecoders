@@ -24,7 +24,7 @@ export default {
 @import '../assets/theme';
 
 .main-container {
-  @include mobile {
+  @include until-widescreen {
     margin-top: 0px;
   }
 

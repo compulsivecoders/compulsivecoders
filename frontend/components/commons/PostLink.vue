@@ -1,5 +1,5 @@
 <template>
-  <div class="post">
+  <div :class="theme" class="post">
     <a :href="link" class="thumbnail">
       <figure class="image is-1by1">
         <img :src="imageSrc" :alt="title">
@@ -48,6 +48,10 @@ export default {
     slug: {
       type: String,
       default: ''
+    },
+    theme: {
+      type: String,
+      default: 'dark'
     }
   },
   computed: {
@@ -62,7 +66,20 @@ export default {
   .post {
     padding-bottom: 20px;
     margin-bottom: 20px;
-    border-bottom: 1px solid #333;
+
+    &.dark {
+      .post-title {
+        color: white;
+      }
+      border-bottom: 1px solid #333;
+    }
+
+    &.light {
+      .post-title {
+        color: #666;
+      }
+      border-bottom: 1px solid #eee;
+    }
 
     .thumbnail {
       width: 80px;
@@ -81,7 +98,6 @@ export default {
       width: calc(100% - 110px);
 
       .post-title {
-        color: white;
         font-family: 'MontserratSemiBold';
         font-size: 0.8rem;
         margin-bottom: 10px;

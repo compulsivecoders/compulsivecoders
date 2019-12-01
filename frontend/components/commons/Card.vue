@@ -114,7 +114,7 @@ export default {
     }
 
     .card-footer {
-      padding-bottom: 30px;
+      padding-bottom: 20px;
 
       .publication-date {
         color: $grey;
@@ -122,6 +122,7 @@ export default {
       }
     }
 
+    display: block;
     margin-bottom: 30px;
     border-bottom: 1px solid #eee;
   }
