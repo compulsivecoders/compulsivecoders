@@ -9,6 +9,7 @@
         :title="post.title"
         :description="post.description"
         :main-tag="post.mainTag"
+        :slug="post.slug"
         :tag="post.tag"
         :date="post.date"
       />
@@ -22,6 +23,7 @@
         :title="post.title"
         :description="post.description"
         :main-tag="post.mainTag"
+        :slug="post.slug"
         :tag="post.tag"
         :date="post.date"
       />
@@ -35,8 +37,9 @@
         :title="post.title"
         :description="post.description"
         :main-tag="post.mainTag"
-        :date="post.date"
         :slug="post.slug"
+        :tag="post.tag"
+        :date="post.date"
       />
     </div>
   </div>

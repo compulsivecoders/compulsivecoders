@@ -24,9 +24,15 @@
         <div class="control">
           <div class="select is-small">
             <select v-model="internalMainTag">
-              <option>Tech</option>
-              <option>Maths</option>
-              <option>Debug</option>
+              <option value="tech">
+                Tech
+              </option>
+              <option value="maths">
+                Maths
+              </option>
+              <option value="debug">
+                Debug
+              </option>
             </select>
           </div>
         </div>
@@ -132,7 +138,7 @@ export default {
     this.internalTitle = this.title
     this.internalSlug = this.slug
     this.internalDescription = this.description
-    this.internalMainTag = this.mainTag.charAt(0).toUpperCase() + this.mainTag.slice(1)
+    this.internalMainTag = this.mainTag
     this.internalThumbnailUrl = this.thumbnail
     this.internalCoverUrl = this.cover
     this.internalContent = this.content

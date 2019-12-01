@@ -1,24 +1,15 @@
 <template>
   <div class="popular-posts">
     <FooterTitle title="Popular posts" />
-    <div class="posts-container">
+    <div v-if="posts" class="posts-container">
       <Post
-        image-src="images/heroku-edit-files.webp"
-        link="/"
-        title="How to Edit a File on Heroku Dynos using Nano or Vim"
-        date="2 months ago"
-      />
-      <Post
-        image-src="images/laradock-permission-denied.webp"
-        link="/"
-        title="Laradock: How to fix Permission denied issue"
-        date="2 months ago"
-      />
-      <Post
-        image-src="images/laravel-multiple-vendors.webp"
-        link="/"
-        title="How to Split Dependencies into Multiple Vendors using Laravel Mix"
-        date="2 months ago"
+        v-for="(post, index) in posts.slice(0,3)"
+        :key="index"
+        :image-src="post.thumbnail"
+        :title="post.title"
+        :main-tag="post.mainTag"
+        :slug="post.slug"
+        :date="post.date"
       />
     </div>
   </div>
@@ -28,7 +19,18 @@
 import FooterTitle from './FooterTitle'
 import Post from './Post'
 export default {
-  components: { FooterTitle, Post }
+  components: { FooterTitle, Post },
+  data () {
+    return {
+      posts: []
+    }
+  },
+  mounted () {
+    this.$axios.get('/posts')
+      .then((data) => {
+        this.posts = data.data
+      })
+  }
 }
 </script>
 

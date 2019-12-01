@@ -46,7 +46,7 @@ export class BlogPostsController {
     const post = await BlogPost.findOne({ id });
 
     if (post === undefined) {
-      return res.status(HttpStatus.NOT_FOUND);
+      return res.status(HttpStatus.NOT_FOUND).json({'error': '404'});
     }
 
     return res.status(HttpStatus.OK).json({
@@ -67,13 +67,13 @@ export class BlogPostsController {
   @Put(':id')
   async update(@Param() params, @Body() updateBlogPostDto: UpdateBlogPostDto, @Res() res: Response): Promise<any> {
     if (updateBlogPostDto.secret !== this.config.get('SECRET_PASSWORD')) {
-      return res.status(HttpStatus.FORBIDDEN);
+      return res.status(HttpStatus.FORBIDDEN).json({'error': '403'});
     }
 
     let blogPost = await BlogPost.findOne({ id: params.id });
 
     if (blogPost === undefined) {
-      return res.status(HttpStatus.NOT_FOUND);
+      return res.status(HttpStatus.NOT_FOUND).json({'error': '404'});
     }
 
     blogPost.title = updateBlogPostDto.title;
@@ -94,7 +94,7 @@ export class BlogPostsController {
   @Post()
   async create(@Body() createBlogPostDto: CreateBlogPostDto, @Res() res: Response): Promise<any> {
     if (createBlogPostDto.secret !== this.config.get('SECRET_PASSWORD')) {
-      return res.status(HttpStatus.FORBIDDEN);
+      return res.status(HttpStatus.FORBIDDEN).json({'error': '403'});
     }
 
     const blogPost = new BlogPost();

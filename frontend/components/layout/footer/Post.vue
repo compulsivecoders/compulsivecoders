@@ -6,7 +6,7 @@
       </figure>
     </a>
     <div class="post-content">
-      <a :href="link">
+      <a :href="routeLink">
         <h5 class="post-title">
           {{ title }}
         </h5>
@@ -40,6 +40,19 @@ export default {
     date: {
       type: String,
       default: ''
+    },
+    mainTag: {
+      type: String,
+      default: ''
+    },
+    slug: {
+      type: String,
+      default: ''
+    }
+  },
+  computed: {
+    routeLink () {
+      return `/${this.mainTag}/${this.slug}`
     }
   }
 }

@@ -2,9 +2,9 @@
   <div class="tags">
     <FooterTitle title="Hot Tags" />
     <div class="tags-container">
-      <Tag name="Maths" />
-      <Tag name="Tech" />
-      <Tag name="Debug" />
+      <Tag name="Maths" tag="maths" />
+      <Tag name="Tech" tag="tech" />
+      <Tag name="Debug" tag="debug" />
     </div>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
-  <div class="tag">
+  <nuxt-link class="tag-link" :to="tag">
     #{{ name }}
-  </div>
+  </nuxt-link>
 </template>
 
 <script>
@@ -10,13 +10,18 @@ export default {
     name: {
       type: String,
       default: ''
+    },
+    tag: {
+      type: String,
+      default: ''
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  .tag {
+  .tag-link {
+    margin-right: 10px;
     border: 1px solid #666;
     border-radius: 8px;
     padding: 2px 10px 2px 10px;
