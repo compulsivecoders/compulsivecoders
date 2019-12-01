@@ -2,13 +2,20 @@
   <div class="columns">
     <div class="column is-8-desktop is-12-tablet">
       <div class="post-section">
-        <h1 class="title">
+        <PostCover :image-src="post.cover" />
+        <div class="post-tag">
+          {{ post.mainTag }}
+        </div>
+        <h1 class="post-title">
           {{ post.title }}
         </h1>
-        <p>Views: {{ post.views }}</p>
+        <span class="post-views">
+          <i class="fa fa-eye" />
+          {{ post.views }}
+        </span>
         <section>
           <!-- eslint-disable-next-line -->
-          <div v-html="post.content" />
+          <div v-html="post.content" class="post-content" />
         </section>
       </div>
     </div>
@@ -24,6 +31,7 @@
 <script>
 import 'highlight.js/styles/dracula.css'
 import CategoryPosts from '../../components/commons/CategoryPosts'
+import PostCover from '../../components/post/PostCover'
 
 function htmlDecode (input) {
   const e = document.createElement('textarea')
@@ -31,7 +39,7 @@ function htmlDecode (input) {
   return e.value
 }
 export default {
-  components: { CategoryPosts },
+  components: { PostCover, CategoryPosts },
   asyncData ({ store, params, app: { $axios } }) {
     return $axios.get(`/posts/?category='${params.category}&slug=${params.slug}`)
       .then((data) => {
@@ -40,6 +48,8 @@ export default {
   },
   mounted () {
     // TODO Remove this code block as soon as Code block feature is available in CK Editor
+    this.$axios.post('/posts/' + this.post.id + '/view')
+
     if (window) {
       const highlightJs = require('highlight.js')
       document.querySelectorAll('blockquote').forEach((block) => {
@@ -61,7 +71,69 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .container {
-    max-width: 90%;
+  .post-tag {
+    font-family: 'MontserratSemiBold';
+    color: #0074D9;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.8rem;
+    margin-top: 35px;
+    margin-bottom: 15px;
+  }
+
+  .post-title {
+    font-family: 'MontserratSemiBold';
+    font-size: 2.2rem;
+    line-height: 2.5rem;
+  }
+
+  .post-views {
+    font-size: 0.8rem;
+    color: #999;
+  }
+
+  .post-content {
+    overflow-wrap: break-word;
+
+    /deep/ h2 {
+      font-family: 'MontserratSemiBold';
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+
+    /deep/ h3 {
+      font-family: 'MontserratSemiBold';
+      font-size: 1.3rem;
+      margin-bottom: 7px;
+      margin-top: 7px;
+    }
+
+    /deep/ h4 {
+      font-family: 'MontserratSemiBold';
+      font-size: 1.1rem;
+      margin-top: 7px;
+    }
+
+    /deep/ pre {
+      padding: 7px;
+      margin-bottom: 10px;
+    }
+
+    /deep/ .image {
+      margin: 5%;
+      width: 90%;
+      figcaption {
+        padding: 5px;
+        color: #666;
+        text-align: center;
+        font-size: 0.8rem;
+      }
+    }
+
+    /deep/ ul {
+      list-style-type: circle;
+      margin-left: 35px;
+    }
   }
 </style>

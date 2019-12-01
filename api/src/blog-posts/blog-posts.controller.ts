@@ -112,4 +112,21 @@ export class BlogPostsController {
       id: newBlogPost.id,
     });
   }
+
+  @Post(':id/view')
+  async incrementView(@Param() params, @Res() res: Response): Promise<any> {
+
+    let blogPost = await BlogPost.findOne({ id: params.id });
+
+    if (blogPost === undefined) {
+      return res.status(HttpStatus.NOT_FOUND).json({'error': '404'});
+    }
+
+    blogPost.views = parseInt(blogPost.views.toString()) + 1;
+    blogPost = await blogPost.save();
+
+    return res.status(HttpStatus.OK).json({
+      id: blogPost.id,
+    });
+  }
 }

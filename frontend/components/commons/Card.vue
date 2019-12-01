@@ -101,6 +101,8 @@ export default {
         @include mobile {
           padding-top: 300px;
         }
+        border-radius: 5px;
+        overflow: hidden;
       }
 
       img {
