@@ -9,7 +9,7 @@ export default {
     id: 'UA-153795796-1',
     debug: {
       enabled: false,
-      sendHitTask: false
+      sendHitTask: true
     }
   },
 
