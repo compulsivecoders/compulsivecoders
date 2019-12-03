@@ -1,6 +1,18 @@
 
 export default {
   mode: 'universal',
+
+  buildModules: [
+    '@nuxtjs/google-analytics'
+  ],
+  googleAnalytics: {
+    id: 'UA-153795796-1',
+    debug: {
+      enabled: false,
+      sendHitTask: false
+    }
+  },
+
   /*
   ** Headers of the page
   */
