@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link class="tag-link" :to="tag">
+  <nuxt-link class="tag-link" :to="'/' + tag">
     #{{ name }}
   </nuxt-link>
 </template>

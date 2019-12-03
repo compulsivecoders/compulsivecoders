@@ -1,6 +1,6 @@
 <template>
   <figure class="post-cover image is-16by9">
-    <img :src="imageSrc" />
+    <img :src="imageSrc">
   </figure>
 </template>
 

@@ -23,6 +23,9 @@ export class BlogPostsController {
     if ('slug' in query) {
       queryFilters['slug'] = query.slug;
     }
+
+    queryFilters['isPublished'] = true;
+
     const allPosts = await BlogPost.find(queryFilters);
 
     return res.status(HttpStatus.OK).json(
@@ -37,6 +40,7 @@ export class BlogPostsController {
         date: post.created_at,
         views: post.views,
         content: post.content,
+        isPublished: post.isPublished,
       })),
     );
   }
@@ -61,6 +65,7 @@ export class BlogPostsController {
       views: post.views,
       content: post.content,
       author: post.author,
+      isPublished: post.isPublished,
     });
   }
 
@@ -83,6 +88,7 @@ export class BlogPostsController {
     blogPost.cover = updateBlogPostDto.cover;
     blogPost.content = updateBlogPostDto.content;
     blogPost.author = updateBlogPostDto.author;
+    blogPost.isPublished = updateBlogPostDto.isPublished;
 
     blogPost = await blogPost.save();
 
@@ -106,6 +112,7 @@ export class BlogPostsController {
     blogPost.cover = createBlogPostDto.cover;
     blogPost.content = createBlogPostDto.content;
     blogPost.author = createBlogPostDto.author;
+    blogPost.isPublished = createBlogPostDto.isPublished;
     const newBlogPost = await blogPost.save();
 
     return res.status(HttpStatus.CREATED).json({

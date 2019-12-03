@@ -8,4 +8,5 @@ export class UpdateBlogPostDto {
   readonly cover: string;
   readonly content: string;
   readonly author: string;
+  readonly isPublished: boolean;
 }

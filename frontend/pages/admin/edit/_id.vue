@@ -8,6 +8,7 @@
     :cover="cover"
     :content="content"
     :author="author"
+    :is-published="isPublished"
     :submit-function="updatePost"
   />
 </template>
@@ -27,7 +28,8 @@ export default {
       thumbnailUrl: null,
       coverUrl: null,
       content: null,
-      author: null
+      author: null,
+      isPublished: null
     }
   },
   asyncData ({ store, params, app: { $axios } }) {

@@ -10,7 +10,7 @@
 // Bulma Global Ajustments
 @import '~bulma/sass/utilities/_all.sass';
 
-.columns {
+.columns:not(.no-padding) {
   padding-left: 20px;
   padding-right: 20px;
   .column {

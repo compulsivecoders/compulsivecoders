@@ -11,16 +11,18 @@ export class TagsController {
     const posts = tag.posts;
 
     return res.status(HttpStatus.OK).json(
-      posts.map(post => ({
-        id: post.id,
-        cover: post.cover,
-        thumbnail: post.thumbnail,
-        title: post.title,
-        description: post.description,
-        slug: post.slug,
-        mainTag: post.mainTag,
-        date: post.created_at,
-      })),
+      posts
+        .filter(post => { return post.isPublished })
+        .map(post => ({
+          id: post.id,
+          cover: post.cover,
+          thumbnail: post.thumbnail,
+          title: post.title,
+          description: post.description,
+          slug: post.slug,
+          mainTag: post.mainTag,
+          date: post.created_at,
+        })),
     );
   }
 }

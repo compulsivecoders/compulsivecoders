@@ -1,10 +1,22 @@
 <template>
   <div class="columns">
     <div class="column">
-      <div class="field">
-        <label class="label">Title</label>
-        <div class="control">
-          <input v-model="internalTitle" class="input is-small" type="text" placeholder="Title">
+      <div class="columns no-padding">
+        <div class="column is-9">
+          <div class="field">
+            <label class="label">Title</label>
+            <div class="control">
+              <input v-model="internalTitle" class="input is-small" type="text" placeholder="Title">
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="field">
+            <label class="label">Published</label>
+            <div class="control">
+              <input v-model="internalIsPublished" type="checkbox">&nbsp;Published
+            </div>
+          </div>
         </div>
       </div>
       <div class="field">
@@ -115,6 +127,10 @@ export default {
       type: String,
       default: ''
     },
+    isPublished: {
+      type: Boolean,
+      default: false
+    },
     submitFunction: {
       type: Function,
       default: () => {}
@@ -131,7 +147,8 @@ export default {
       internalCoverUrl: null,
       internalContent: null,
       internalAuthor: null,
-      internalSecret: null
+      internalSecret: null,
+      internalIsPublished: null
     }
   },
   mounted () {
@@ -143,6 +160,7 @@ export default {
     this.internalCoverUrl = this.cover
     this.internalContent = this.content
     this.internalAuthor = this.author
+    this.internalIsPublished = this.isPublished
     if (window) {
       this.editor = require('@ckeditor/ckeditor5-build-balloon')
     }
@@ -158,7 +176,8 @@ export default {
         cover: this.internalCoverUrl,
         content: this.internalContent,
         author: this.internalAuthor,
-        secret: this.internalSecret
+        secret: this.internalSecret,
+        isPublished: this.internalIsPublished
       })
     }
   }

@@ -22,15 +22,15 @@ import SectionTitle from './SectionTitle'
 
 export default {
   components: { SectionTitle, PostLink },
-  data () {
-    return {
-      posts: []
-    }
-  },
   props: {
     tag: {
       type: String,
       default: ''
+    }
+  },
+  data () {
+    return {
+      posts: []
     }
   },
   mounted () {
