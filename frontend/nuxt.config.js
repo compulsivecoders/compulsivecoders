@@ -25,7 +25,14 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    ],
+    script: [
+      { 'data-ad-client': 'ca-pub-5608025474256056',
+        src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
+        href: '/favicon.ico',
+        async: true
+      }
+    ],
   },
   /*
   ** Customize the progress-bar color
