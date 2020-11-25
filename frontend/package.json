@@ -19,7 +19,7 @@
     "@nuxtjs/bulma": "^1.2.1",
     "@nuxtjs/font-awesome": "^1.0.4",
     "@nuxtjs/pwa": "^2.6.0",
-    "highlight.js": "^9.16.2",
+    "highlight.js": "^10.1.2",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {
